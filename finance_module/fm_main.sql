@@ -10,9 +10,9 @@ PROMPT =======================================================
 PROMPT Starting Finance Module Deployment...
 PROMPT =======================================================
 
-@fin_drop.sql
-@fin_cre.sql
-@fin_popul.sql
+@fm_drop.sql
+@fm_create.sql
+@fm_populate.sql
 
 PROMPT =======================================================
 PROMPT Finance Deployment Successfully Completed!
