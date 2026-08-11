@@ -14,7 +14,7 @@ Crucially, it utilizes a Master-Detail (Header-Lines) architecture for Leases. B
 * **RE_LEASE_UNITS**: The line-item details bridging one lease to multiple physical units.
 
 ## Install / Uninstall Instructions
-1. Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account (e.g., `ERP_PROJECT`).
+1. Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account.
 2. **To Install:** Run the master script to generate the tables, constraints, and triggers, and populate the sample data:
    `@pm_main.sql`
 3. **To Uninstall/Clean:** Run the drop script to safely remove all constraints and tables before a fresh installation:
