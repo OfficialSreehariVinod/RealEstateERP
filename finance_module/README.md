@@ -14,7 +14,7 @@ When a Lease is signed in the Property Management module, a stored procedure aut
 
 **⚠️ Important Dependency Note:** *Because the Finance module links to historical leases, the **Property Management (PM) Module** MUST be installed prior to running this Finance installation.*
 
-1. Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account (e.g., `ERP_PROJECT`).
+1. Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account.
 2. **To Install:** Run the master script to generate tables, GL accounts, audit triggers, and the invoice-generation stored procedure:
    `@fin_main.sql`
 3. **To Uninstall/Clean:** Run the drop script to safely remove all procedures, constraints, and tables:
