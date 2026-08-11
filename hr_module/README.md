@@ -16,7 +16,7 @@ The HR module serves as the foundational Hub for the ERP. In the Real Estate fir
 2. **To Install**: Run the master script to generate tables, constraints, and triggers:
 @hr_main.sql
 
-* **To Uninstall/Clean**: Run the drop script to safely remove all constraints and tables:
+3. **To Uninstall/Clean**: Run the drop script to safely remove all constraints and tables:
 @hr_drop.sql
 
 
