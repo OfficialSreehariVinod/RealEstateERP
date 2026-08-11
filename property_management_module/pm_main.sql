@@ -11,8 +11,8 @@ PROMPT Starting Property Management Module Deployment...
 PROMPT =======================================================
 
 @pm_drop.sql
-@pm_cre.sql
-@pm_popul.sql
+@pm_create.sql
+@pm_populate.sql
 
 PROMPT =======================================================
 PROMPT Property Management Deployment Successfully Completed!
