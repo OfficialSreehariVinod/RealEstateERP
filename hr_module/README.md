@@ -10,6 +10,16 @@ The HR module serves as the foundational Hub for the ERP. In the Real Estate fir
 * **EMP_SALARY_SETTINGS**: A highly secured 1-to-1 extension table tracking base salaries and bank account numbers for payroll processing.
 * **EMP_DOCUMENTS**: A 1-to-Many compliance table tracking official records like passports, visas, and their respective expiry dates.
 
+## Install / Uninstall Instructions
+* Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account.
+
+* To Install: Run the master script to generate tables, constraints, and triggers:
+@hr_main.sql
+
+* To Uninstall/Clean: Run the drop script to safely remove all constraints and tables:
+@hr_drop.sql
+
+
 ## ER Diagram
 
 ```mermaid
@@ -84,11 +94,3 @@ erDiagram
         VARCHAR2 created_by
     }
 
-Install / Uninstall Instructions
-Open Oracle SQL Developer or SQL*Plus and connect to your schema owner account (e.g., ERP_PROJECT).
-
-To Install: Run the master script to generate tables, constraints, and triggers:
-@hr_main.sql
-
-To Uninstall/Clean: Run the drop script to safely remove all constraints and tables:
-@hr_drop.sql
