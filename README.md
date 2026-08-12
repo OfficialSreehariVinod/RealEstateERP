@@ -20,28 +20,101 @@ The system utilizes a "Streams and Pools" methodology. Operational data (like ne
 
 ```mermaid
 erDiagram
+    %% ==========================================
+    %% HR MODULE (The Hub)
+    %% ==========================================
     DEPARTMENTS ||--o{ EMPLOYEE_MASTER : "employs"
     EMPLOYEE_MASTER ||--o| EMP_PERSONAL_INFO : "has personal profile"
     EMPLOYEE_MASTER ||--o| EMP_SALARY_SETTINGS : "has financial profile"
     EMPLOYEE_MASTER ||--o{ EMP_DOCUMENTS : "holds"
 
+    %% ==========================================
+    %% PROPERTY MANAGEMENT MODULE (The Stream)
+    %% ==========================================
     RE_BUILDINGS ||--o{ RE_UNITS : "contains"
     RE_CLIENTS ||--o{ RE_LEASES : "signs"
     RE_LEASES ||--|{ RE_LEASE_UNITS : "includes"
     RE_UNITS ||--o{ RE_LEASE_UNITS : "rented via"
 
+    %% ==========================================
+    %% FINANCE MODULE (The Pool) & Cross-Module Links
+    %% ==========================================
     GL_ACCOUNTS ||--o{ FINANCE_INVOICES : "categorizes revenue for"
     FINANCE_INVOICES ||--o{ FINANCE_PAYMENTS : "receives installments via"
     
-    %% INTER-MODULE LINK
-    RE_LEASES ||--o{ FINANCE_INVOICES : "generates billing for (Cross-Module Link)"
+    %% INTER-MODULE LINK: Property Management -> Finance
+    RE_LEASES ||--o{ FINANCE_INVOICES : "generates billing for"
 
-    DEPARTMENTS { NUMBER dept_id PK }
-    EMPLOYEE_MASTER { NUMBER emp_id PK }
-    RE_BUILDINGS { NUMBER building_id PK }
-    RE_CLIENTS { NUMBER client_id PK }
-    RE_UNITS { NUMBER unit_id PK }
-    RE_LEASES { NUMBER lease_id PK }
-    GL_ACCOUNTS { NUMBER account_id PK }
-    FINANCE_INVOICES { NUMBER invoice_id PK }
+    %% Table Definitions (Core Attributes)
+    DEPARTMENTS {
+        NUMBER dept_id PK
+        VARCHAR2 dept_code "UK"
+        VARCHAR2 dept_name
+    }
+    EMPLOYEE_MASTER {
+        NUMBER emp_id PK
+        VARCHAR2 first_name
+        NUMBER current_dept_id FK
+    }
+    EMP_PERSONAL_INFO {
+        NUMBER info_id PK
+        NUMBER emp_id FK
+    }
+    EMP_SALARY_SETTINGS {
+        NUMBER payroll_id PK
+        NUMBER emp_id FK
+    }
+    EMP_DOCUMENTS {
+        NUMBER doc_id PK
+        NUMBER emp_id FK
+    }
+
+    RE_BUILDINGS {
+        NUMBER building_id PK
+        VARCHAR2 building_name
+    }
+    RE_CLIENTS {
+        NUMBER client_id PK
+        VARCHAR2 first_name
+        VARCHAR2 client_type
+    }
+    RE_UNITS {
+        NUMBER unit_id PK
+        NUMBER building_id FK
+        VARCHAR2 unit_number
+        NUMBER monthly_rent_rate
+    }
+    RE_LEASES {
+        NUMBER lease_id PK
+        NUMBER client_id FK
+        DATE start_date
+        DATE end_date
+        NUMBER total_rent
+    }
+    RE_LEASE_UNITS {
+        NUMBER lease_unit_id PK
+        NUMBER lease_id FK
+        NUMBER unit_id FK
+        NUMBER allocated_rent
+    }
+
+    GL_ACCOUNTS {
+        NUMBER account_id PK
+        VARCHAR2 account_number "UK"
+        VARCHAR2 account_type
+    }
+    FINANCE_INVOICES {
+        NUMBER invoice_id PK
+        NUMBER lease_id FK "Cross-Module Link"
+        NUMBER account_id FK
+        DATE due_date
+        NUMBER amount
+        VARCHAR2 status
+    }
+    FINANCE_PAYMENTS {
+        NUMBER payment_id PK
+        NUMBER invoice_id FK
+        NUMBER amount_paid
+        DATE payment_date
+    }_id PK }
     FINANCE_PAYMENTS { NUMBER payment_id PK }
