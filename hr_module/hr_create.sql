@@ -28,10 +28,10 @@ VALUES (2, '456 Property Heights, Downtown, Dubai', '+971-55-1122334', 'Jane Smi
 
 PROMPT Populating EMP_SALARY_SETTINGS (1-to-1)...
 INSERT INTO emp_salary_settings (emp_id, base_salary, bank_name, account_number)
-VALUES (1, 45000.00, 'Emirates NBD', 'AE123456789012345678901');
+VALUES (1, 45000.00, 'AE123456789012345678901');
 
 INSERT INTO emp_salary_settings (emp_id, base_salary, bank_name, account_number)
-VALUES (2, 25000.00, 'Dubai Islamic Bank', 'AE987654321098765432109');
+VALUES (2, 25000.00, 'AE987654321098765432109');
 
 
 PROMPT Populating EMP_DOCUMENTS (1-to-Many)...
