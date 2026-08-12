@@ -116,5 +116,4 @@ erDiagram
         NUMBER invoice_id FK
         NUMBER amount_paid
         DATE payment_date
-    }_id PK }
-    FINANCE_PAYMENTS { NUMBER payment_id PK }
+    }
