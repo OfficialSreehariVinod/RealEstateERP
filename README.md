@@ -166,5 +166,4 @@ erDiagram
         VARCHAR2 payment_method
         VARCHAR2 reference_number
         NUMBER amount_paid
-    }date
     }
